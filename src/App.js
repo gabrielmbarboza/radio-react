@@ -1,26 +1,59 @@
 import React from 'react';
-import logo from './logo.svg';
+import ReactHowler from 'react-howler';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      playing: false,
+      icon: "play_circle_outline"
+    };
+  }
+
+  isPlaying() {
+    this.state.playing ? this.pauseHandler() : this.playHandler();
+  }
+
+  playHandler() {
+    this.setState(
+      {
+        playing: true,
+        icon: 'pause_circle_outline'
+      }
+    );
+  }
+
+  pauseHandler() {
+    this.setState(
+      {
+        playing: false,
+        icon: "play_circle_outline"
+      }
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        <ReactHowler
+          src={'https://servidor32-4.brlogic.com:8130/live'}
+          format={['mp3', 'aac']}
+          playing={this.state.playing}
+          html5={true}
+        />
+        <Button icon={this.state.icon} onClick={() => this.isPlaying()} />
+      </div>
+    );
+  }
 }
+
+const Button = (props) => (
+  <div className="button play" onClick={() => props.onClick()}>
+    <i className="material-icons">{props.icon}</i>
+  </div>
+);
 
 export default App;
