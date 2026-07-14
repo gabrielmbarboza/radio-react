@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { GothicBackground } from '../../components/GothicBackground';
+import { SoundWave } from '../../components/SoundWave';
 import { useRadioStream } from '../../hooks/useRadioStream';
 
 export default function PlayerScreen() {
@@ -37,6 +38,10 @@ export default function PlayerScreen() {
             >
               <Text style={styles.playIcon}>{playing ? '❚❚' : '▶'}</Text>
             </Pressable>
+
+            <View style={styles.soundWave}>
+              <SoundWave playing={playing} />
+            </View>
 
             {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
@@ -146,6 +151,9 @@ const styles = StyleSheet.create({
   statusTextPill: {
     color: '#f2f2f2',
     fontSize: 13,
+  },
+  soundWave: {
+    marginBottom: 20,
   },
   playButton: {
     width: 88,

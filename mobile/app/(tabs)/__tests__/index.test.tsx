@@ -9,6 +9,11 @@ const mockedCreateAsync = Audio.Sound.createAsync as jest.Mock;
 describe('PlayerScreen', () => {
   beforeEach(() => {
     mockedCreateAsync.mockReset();
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   it('shows the radio title and standby status before playing', async () => {
