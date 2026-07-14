@@ -2,9 +2,9 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { useRadioStream } from './hooks/useRadioStream';
+import { useRadioStream } from '../../hooks/useRadioStream';
 
-export default function App() {
+export default function PlayerScreen() {
   const { playing, loading, error, togglePlayback } = useRadioStream();
 
   return (
