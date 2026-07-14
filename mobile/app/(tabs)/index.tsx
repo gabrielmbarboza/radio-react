@@ -2,55 +2,58 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { GothicBackground } from '../../components/GothicBackground';
 import { useRadioStream } from '../../hooks/useRadioStream';
 
 export default function PlayerScreen() {
   const { playing, loading, error, togglePlayback } = useRadioStream();
 
   return (
-    <View style={styles.container}>
-      <StatusBar style="light" />
-      <View style={styles.phoneFrame}>
-        <View style={styles.statusBar}>
-          <Text style={styles.statusText}>09:41</Text>
-          <Text style={styles.statusText}>●●●</Text>
-        </View>
-
-        <View style={styles.card}>
-          <View style={styles.ornament} />
-          <Text style={styles.eyebrow}>Heavy rock • live stream</Text>
-          <Text style={styles.title}>Blackened Pulse</Text>
-          <Text style={styles.subtitle}>A cathedral of distortion for midnight souls.</Text>
-
-          <View style={styles.statusPill}>
-            <View style={[styles.statusDot, playing && styles.liveDot]} />
-            <Text style={styles.statusTextPill}>
-              {loading ? 'Connecting...' : playing ? 'Live now' : 'On standby'}
-            </Text>
+    <GothicBackground>
+      <View style={styles.container}>
+        <StatusBar style="light" />
+        <View style={styles.phoneFrame}>
+          <View style={styles.statusBar}>
+            <Text style={styles.statusText}>09:41</Text>
+            <Text style={styles.statusText}>●●●</Text>
           </View>
 
-          <Pressable
-            onPress={togglePlayback}
-            style={[styles.playButton, playing && styles.playButtonActive]}
-          >
-            <Text style={styles.playIcon}>{playing ? '❚❚' : '▶'}</Text>
-          </Pressable>
+          <View style={styles.card}>
+            <View style={styles.ornament} />
+            <Text style={styles.eyebrow}>Heavy rock • live stream</Text>
+            <Text style={styles.title}>Blackened Pulse</Text>
+            <Text style={styles.subtitle}>A cathedral of distortion for midnight souls.</Text>
 
-          {error ? <Text style={styles.errorText}>{error}</Text> : null}
-
-          <View style={styles.infoGrid}>
-            <View style={styles.infoBox}>
-              <Text style={styles.infoLabel}>Genre</Text>
-              <Text style={styles.infoValue}>Heavy Rock</Text>
+            <View style={styles.statusPill}>
+              <View style={[styles.statusDot, playing && styles.liveDot]} />
+              <Text style={styles.statusTextPill}>
+                {loading ? 'Connecting...' : playing ? 'Live now' : 'On standby'}
+              </Text>
             </View>
-            <View style={styles.infoBox}>
-              <Text style={styles.infoLabel}>Stream</Text>
-              <Text style={styles.infoValue}>24/7</Text>
+
+            <Pressable
+              onPress={togglePlayback}
+              style={[styles.playButton, playing && styles.playButtonActive]}
+            >
+              <Text style={styles.playIcon}>{playing ? '❚❚' : '▶'}</Text>
+            </Pressable>
+
+            {error ? <Text style={styles.errorText}>{error}</Text> : null}
+
+            <View style={styles.infoGrid}>
+              <View style={styles.infoBox}>
+                <Text style={styles.infoLabel}>Genre</Text>
+                <Text style={styles.infoValue}>Heavy Rock</Text>
+              </View>
+              <View style={styles.infoBox}>
+                <Text style={styles.infoLabel}>Stream</Text>
+                <Text style={styles.infoValue}>24/7</Text>
+              </View>
             </View>
           </View>
         </View>
       </View>
-    </View>
+    </GothicBackground>
   );
 }
 
@@ -60,14 +63,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 24,
-    backgroundColor: '#050505',
   },
   phoneFrame: {
     width: '100%',
     maxWidth: 390,
     padding: 16,
     borderRadius: 32,
-    backgroundColor: '#121212',
+    backgroundColor: 'rgba(18,18,18,0.85)',
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.08)',
     shadowColor: '#000',
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
   card: {
     padding: 24,
     borderRadius: 24,
-    backgroundColor: '#090909',
+    backgroundColor: 'rgba(9,9,9,0.85)',
     alignItems: 'center',
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.08)',

@@ -1,34 +1,38 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { GothicBackground } from '../../components/GothicBackground';
+
 export default function AboutScreen() {
   return (
-    <View style={styles.container}>
-      <View style={styles.card}>
-        <Text style={styles.eyebrow}>Heavy rock • live stream</Text>
-        <Text style={styles.title}>Blackened Pulse</Text>
-        <Text style={styles.paragraph}>
-          A cathedral of distortion for midnight souls. Blackened Pulse transmite heavy rock
-          sem parar, todos os dias, para quem busca peso, atmosfera e devoção sonora a
-          qualquer hora da noite.
-        </Text>
-        <Text style={styles.paragraph}>
-          Transmissão ao vivo, 24 horas por dia, 7 dias por semana — sem playlists engessadas,
-          só a pulsação constante de riffs pesados.
-        </Text>
+    <GothicBackground>
+      <View style={styles.container}>
+        <View style={styles.card}>
+          <Text style={styles.eyebrow}>Heavy rock • live stream</Text>
+          <Text style={styles.title}>Blackened Pulse</Text>
+          <Text style={styles.paragraph}>
+            A cathedral of distortion for midnight souls. Blackened Pulse transmite heavy rock
+            sem parar, todos os dias, para quem busca peso, atmosfera e devoção sonora a
+            qualquer hora da noite.
+          </Text>
+          <Text style={styles.paragraph}>
+            Transmissão ao vivo, 24 horas por dia, 7 dias por semana — sem playlists engessadas,
+            só a pulsação constante de riffs pesados.
+          </Text>
 
-        <View style={styles.infoGrid}>
-          <View style={styles.infoBox}>
-            <Text style={styles.infoLabel}>Genre</Text>
-            <Text style={styles.infoValue}>Heavy Rock</Text>
-          </View>
-          <View style={styles.infoBox}>
-            <Text style={styles.infoLabel}>Stream</Text>
-            <Text style={styles.infoValue}>24/7</Text>
+          <View style={styles.infoGrid}>
+            <View style={styles.infoBox}>
+              <Text style={styles.infoLabel}>Genre</Text>
+              <Text style={styles.infoValue}>Heavy Rock</Text>
+            </View>
+            <View style={styles.infoBox}>
+              <Text style={styles.infoLabel}>Stream</Text>
+              <Text style={styles.infoValue}>24/7</Text>
+            </View>
           </View>
         </View>
       </View>
-    </View>
+    </GothicBackground>
   );
 }
 
@@ -38,14 +42,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 24,
-    backgroundColor: '#050505',
   },
   card: {
     width: '100%',
     maxWidth: 390,
     padding: 24,
     borderRadius: 24,
-    backgroundColor: '#090909',
+    backgroundColor: 'rgba(9,9,9,0.85)',
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.08)',
   },
