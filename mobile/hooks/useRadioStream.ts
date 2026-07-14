@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Audio, InterruptionModeAndroid, InterruptionModeIOS } from 'expo-av';
+import { Audio } from 'expo-av';
 
 const STREAM_URL = 'https://servidor32-4.brlogic.com:8130/live';
 
@@ -10,19 +10,6 @@ export function useRadioStream() {
   const soundRef = useRef<Audio.Sound | null>(null);
 
   useEffect(() => {
-    const configureAudio = async () => {
-      await Audio.setAudioModeAsync({
-        allowsRecordingIOS: false,
-        staysActiveInBackground: true,
-        interruptionModeAndroid: InterruptionModeAndroid.DuckOthers,
-        interruptionModeIOS: InterruptionModeIOS.DuckOthers,
-        playsInSilentModeIOS: true,
-        shouldDuckAndroid: true,
-      });
-    };
-
-    configureAudio();
-
     return () => {
       soundRef.current?.unloadAsync();
     };
